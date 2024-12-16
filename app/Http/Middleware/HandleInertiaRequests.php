@@ -21,15 +21,7 @@ class HandleInertiaRequests extends Middleware
 
     public function share(Request $request): array
     {
-        return [
-            'auth' => [
-                'user' => $request->user() ? [
-                    'id' => $request->user()->id,
-                    'name' => $request->user()->name,
-                    'email' => $request->user()->email,
-                    'roles' => $request->user()->roles,
-                ] : null,
-            ],
+        
             'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
